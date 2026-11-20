@@ -69,7 +69,6 @@
     title: $("[data-d-title]", detail),
     sub: $("[data-d-sub]", detail),
     body: $("[data-d-body]", detail),
-    qr: $("[data-d-qr]", detail),
     prev: $("[data-d-prev]", detail),
     next: $("[data-d-next]", detail),
     prevName: $("[data-d-prev-name]", detail),
@@ -114,7 +113,6 @@
       a.target = "_blank";
       a.rel = "noopener noreferrer";
     });
-    D.qr.innerHTML = qrSvg(`${BASE}#${tile.id}`);
 
     const scope = scopeOf(tile);
     const i = scope.indexOf(tile);

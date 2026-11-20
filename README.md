@@ -1,6 +1,6 @@
 # GHAS Panorama
 
-GitHub Advanced Security at a glance. This is a tile-first page for colleagues and customers. It shows **what every GitHub plan includes for free**, and what the two standalone products, **Secret Protection** and **Code Security**, add. Click any tile for a short summary, links to the docs, and a QR code for that feature.
+GitHub Advanced Security at a glance. This is a tile-first page for colleagues and customers. It shows **what every GitHub plan includes for free**, and what the two standalone products, **Secret Protection** and **Code Security**, add. Click any tile for a short summary and links to the docs.
 
 **Live:** https://sebthiertant.github.io/ghas-panorama/
 
@@ -13,7 +13,7 @@ GitHub Advanced Security at a glance. This is a tile-first page for colleagues a
 | Next / previous slide | <kbd>→</kbd> <kbd>←</kbd>, <kbd>Space</kbd>, <kbd>PageDown</kbd> <kbd>PageUp</kbd>, or swipe |
 | First / last slide | <kbd>Home</kbd> <kbd>End</kbd> |
 | Open a feature | click its tile; <kbd>→</kbd> <kbd>←</kbd> move between features |
-| QR code for the audience | **QR code** button or <kbd>Q</kbd>. Each feature detail has its own QR code |
+| QR code for the audience | shown in the page header; **QR code** button or <kbd>Q</kbd> enlarges it |
 | Light / dark theme | sun/moon button or <kbd>T</kbd> (dark is the default; your choice is remembered) |
 | Close / exit | <kbd>Esc</kbd> |
 
