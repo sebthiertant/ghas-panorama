@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GHAS Panorama · GitHub Advanced Security at a glance</title>
+  <meta name="description" content="GitHub Advanced Security at a glance: what every GitHub plan includes, and what Secret Protection and Code Security add. Click any tile for details. Public sources only.">
+  <link rel="canonical" href="https://sebthiertant.github.io/ghas-panorama/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sebthiertant.github.io/ghas-panorama/">
+  <meta property="og:title" content="GHAS Panorama · GitHub Advanced Security at a glance">
+  <meta property="og:description" content="Block the leak. Fix the flaw. Ship safely. What's included in GitHub, and what Secret Protection and Code Security add.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/MonaSansVF.woff2" as="font" type="font/woff2" crossorigin>
+  <script>try{var t=localStorage.getItem("ghas-pano-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/qrcode.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="GHAS Panorama, back to top">
+    <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#mark-github"/></svg>
+    <span><b>GHAS</b> Panorama</span>
+  </a>
+  <nav class="nav" aria-label="Sections">
+    <a class="free" href="#included"><i aria-hidden="true"></i>Included</a>
+    <a class="sp" href="#secret-protection"><i aria-hidden="true"></i>Secret Protection</a>
+    <a class="cs" href="#code-security"><i aria-hidden="true"></i>Code Security</a>
+    <a class="all" href="#at-scale"><i aria-hidden="true"></i>At scale</a>
+  </nav>
+  <div class="actions">
+    <button type="button" class="btn" data-qr aria-haspopup="dialog">
+      <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#device-mobile"/></svg><span>QR code</span>
+    </button>
+    <button type="button" class="btn btn-primary" data-present>
+      <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#screen-full"/></svg><span>Present</span>
+    </button>
+    <button type="button" class="btn-icon" data-theme-toggle aria-label="Switch to light theme" title="Switch theme (T)">
+      <svg class="octicon i-sun" aria-hidden="true"><use href="assets/icons.svg#sun"/></svg>
+      <svg class="octicon i-moon" aria-hidden="true"><use href="assets/icons.svg#moon"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ Title ============ -->
+  <section class="slide hero" id="top" data-slide aria-labelledby="headline">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <p class="eyebrow">GitHub Advanced Security <span aria-hidden="true">·</span> Panorama <span aria-hidden="true">·</span> November 2026</p>
+        <h1 id="headline">
+          <span class="l1">Block the leak.</span>
+          <span class="l2">Fix the flaw.</span>
+          <span class="l3">Ship safely.</span>
+        </h1>
+        <p class="dek">Every GitHub plan includes the security basics. Since April 2025, GitHub Advanced Security adds two standalone products: <b class="t-sp">Secret Protection</b> and <b class="t-cs">Code Security</b>. Click any tile for the details.</p>
+      </div>
+      <figure class="hero-qr present-only">
+        <div class="qr" data-qr-render aria-hidden="true"></div>
+        <figcaption>Scan to open this page</figcaption>
+      </figure>
+    </div>
+
+    <div class="products">
+      <a class="product free" href="#included" data-goto="included">
+        <span class="p-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#dependabot"/></svg></span>
+        <span class="p-kicker">Free <span aria-hidden="true">·</span> every plan</span>
+        <span class="p-name">Included with GitHub</span>
+        <span class="p-line">Dependabot, dependency graph, advisories, push protection for users.</span>
+        <span class="p-go">5 features <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+      </a>
+      <a class="product sp" href="#secret-protection" data-goto="secret-protection">
+        <span class="p-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#key"/></svg></span>
+        <span class="p-kicker">Paid add-on</span>
+        <span class="p-name">Secret Protection</span>
+        <span class="p-line">Detect and prevent secret leaks.</span>
+        <span class="p-go">6 features <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+      </a>
+      <a class="product cs" href="#code-security" data-goto="code-security">
+        <span class="p-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#codescan"/></svg></span>
+        <span class="p-kicker">Paid add-on</span>
+        <span class="p-name">Code Security</span>
+        <span class="p-line">Find and fix vulnerabilities.</span>
+        <span class="p-go">6 features <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+      </a>
+    </div>
+
+    <ul class="legend" aria-label="Legend">
+      <li><span class="badge free">Included</span> free in every plan</li>
+      <li><span class="badge sp">Secret Protection</span> <span class="badge cs">Code Security</span> paid add-ons for private and internal repos</li>
+      <li><span class="badge public"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#globe"/></svg>Public repos</span> also free for public repos</li>
+      <li><span class="pill preview">Preview</span> may change before GA</li>
+    </ul>
+  </section>
+
+  <!-- ============ 01 Included ============ -->
+  <section class="slide layer free" id="included" data-slide aria-labelledby="h-included">
+    <header class="layer-head">
+      <span class="layer-num" aria-hidden="true">01</span>
+      <div class="layer-title">
+        <h2 id="h-included">Included with GitHub</h2>
+        <p>Supply-chain and security basics, free in every plan.</p>
+      </div>
+      <button type="button" class="btn-icon layer-present" data-present-at="included" aria-label="Present this section" title="Present this section">
+        <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#screen-full"/></svg>
+      </button>
+    </header>
+    <div class="grid">
+
+      <article class="tile wide" id="dependabot" data-plan="free" data-icon="dependabot">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#dependabot"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Dependabot</button></h3>
+        <p class="tile-sub">.github/dependabot.yml</p>
+        <div class="compare">
+          <div class="cmp free">
+            <p class="cmp-h">Included in every plan</p>
+            <ul>
+              <li>Vulnerability alerts</li>
+              <li>Malware alerts</li>
+              <li>Security updates</li>
+              <li>Version updates</li>
+              <li>GitHub preset triage rules</li>
+            </ul>
+          </div>
+          <div class="cmp cs">
+            <p class="cmp-h">Adds with Code Security</p>
+            <ul>
+              <li>Custom auto-triage rules</li>
+              <li>Dependency review in PRs</li>
+              <li>License compliance</li>
+            </ul>
+          </div>
+        </div>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge free">Included</li><li class="badge cs">+ Code Security</li></ul>
+          <p class="d-lede">Dependabot checks every dependency against the GitHub Advisory Database and opens the pull request that fixes it.</p>
+          <ul class="d-points">
+            <li><b>Alerts</b> for vulnerable dependencies, plus <b>malware alerts</b> for npm, pip, Maven, NuGet, Go, Composer, RubyGems and Rust.</li>
+            <li><b>Security updates</b> bump to the minimum patched version; <b>version updates</b> keep everything current.</li>
+            <li><b>GitHub presets</b> auto-dismiss low-impact alerts in development dependencies (on by default for public repos).</li>
+            <li><b>Custom auto-triage rules</b> dismiss, snooze or open PRs for the alerts you choose. They need Code Security on private organization repos.</li>
+            <li><b>New:</b> reachability analysis shows whether your code calls the vulnerable function. Preview, Enterprise Cloud, JavaScript and TypeScript.</li>
+          </ul>
+          <p class="d-note">Malware alerts: github.com and GHES 3.22+. Reachability needs no GHAS license during the preview.</p>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-alerts">Docs · Dependabot alerts</a></li>
+            <li><a href="https://docs.github.com/en/code-security/concepts/supply-chain-security/malware-alerts">Docs · Malware alerts</a></li>
+            <li><a href="https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-auto-triage-rules">Docs · Auto-triage rules</a></li>
+            <li><a href="https://github.blog/changelog/2026-10-28-prioritize-dependabot-alerts-with-reachability-analysis">Changelog · Reachability analysis, 28 Oct 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="dependency-graph" data-plan="free" data-icon="package-dependencies">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#package-dependencies"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Dependency graph &amp; SBOM</button></h3>
+        <p class="tile-sub">sbom · spdx</p>
+        <p class="tile-desc">Every direct and transitive dependency, exportable as an SBOM.</p>
+        <ul class="badges"><li class="badge free">Included</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge free">Included</li></ul>
+          <p class="d-lede">The dependency graph is the map behind Dependabot, dependency review and your SBOM.</p>
+          <ul class="d-points">
+            <li>Built from manifests and lockfiles; add build-time dependencies with the dependency submission API.</li>
+            <li>Export a <b>Software Bill of Materials</b> in SPDX format from the UI or the REST API.</li>
+            <li>Feeds Dependabot alerts and dependency review.</li>
+          </ul>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/supply-chain-security/dependency-graph">Docs · Dependency graph</a></li>
+            <li><a href="https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/establish-provenance-and-integrity/export-dependencies-as-sbom">Docs · Export an SBOM</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="advisories" data-plan="free" data-icon="shield">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#shield"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Advisories &amp; security policy</button></h3>
+        <p class="tile-sub">GHSA · SECURITY.md</p>
+        <p class="tile-desc">The Advisory Database feeds every alert; maintainers disclose privately.</p>
+        <ul class="badges"><li class="badge free">Included</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge free">Included</li></ul>
+          <p class="d-lede">A shared source of truth for known vulnerabilities, and a private path to report new ones.</p>
+          <ul class="d-points">
+            <li><b>GitHub Advisory Database</b>: GitHub-reviewed advisories behind Dependabot and dependency review.</li>
+            <li><b>Security policy</b> (SECURITY.md) tells researchers how to report a vulnerability.</li>
+            <li><b>Repository security advisories</b> let maintainers of public repos fix and publish a vulnerability privately, and request a CVE.</li>
+          </ul>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/vulnerability-reporting-and-management/github-advisory-database">Docs · GitHub Advisory Database</a></li>
+            <li><a href="https://docs.github.com/en/code-security/concepts/vulnerability-reporting-and-management/repository-security-advisories">Docs · Repository security advisories</a></li>
+            <li><a href="https://github.com/advisories">github.com/advisories</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="push-protection-users" data-plan="free" data-icon="shield-check">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#shield-check"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Push protection for users</button></h3>
+        <p class="tile-sub">on by default</p>
+        <p class="tile-desc">Stops anyone pushing a known secret to a public repository.</p>
+        <ul class="badges"><li class="badge free">Included</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge free">Included</li></ul>
+          <p class="d-lede">Every github.com user is protected from leaking supported secrets in public, with no setup.</p>
+          <ul class="d-points">
+            <li><b>Push protection for users</b> is on by default and blocks pushes of supported secrets to public repositories.</li>
+            <li><b>Secret scanning for partners</b>: when a provider's token leaks in a public repo or on npm, GitHub tells the provider so it can be revoked.</li>
+          </ul>
+          <p class="d-note">For private and internal repos, see Secret Protection.</p>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/how-tos/secure-your-secrets/prevent-future-leaks/manage-user-push-protection">Docs · Push protection for users</a></li>
+            <li><a href="https://docs.github.com/en/code-security/tutorials/secret-scanning-partner-program">Docs · Secret scanning partner program</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="rulesets-attestations" data-plan="free" data-icon="law">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#law"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Rulesets &amp; attestations</button></h3>
+        <p class="tile-sub">rules · provenance</p>
+        <p class="tile-desc">Enforce how code merges, and prove where an artifact came from.</p>
+        <ul class="badges"><li class="badge free">Included</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge free">Included</li></ul>
+          <p class="d-lede">Guardrails on how code gets in, and signed proof of what came out.</p>
+          <ul class="d-points">
+            <li><b>Repository rulesets</b> enforce branch and tag rules, such as required reviews and status checks, with named bypass permissions.</li>
+            <li><b>Artifact attestations</b> sign build provenance with Sigstore so anyone can verify what was built, where and how.</li>
+          </ul>
+          <p class="d-note">Attestations for private and internal repos need GitHub Enterprise Cloud.</p>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets">Docs · About rulesets</a></li>
+            <li><a href="https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations">Docs · Artifact attestations</a></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ 02 Secret Protection ============ -->
+  <section class="slide layer sp" id="secret-protection" data-slide aria-labelledby="h-sp">
+    <header class="layer-head">
+      <span class="layer-num" aria-hidden="true">02</span>
+      <div class="layer-title">
+        <h2 id="h-sp">Secret Protection</h2>
+        <p>Detect and prevent secret leaks, from the agent's first keystroke to public GitHub.</p>
+      </div>
+      <button type="button" class="btn-icon layer-present" data-present-at="secret-protection" aria-label="Present this section" title="Present this section">
+        <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#screen-full"/></svg>
+      </button>
+    </header>
+    <div class="grid">
+
+      <article class="tile" id="secret-scanning" data-plan="sp" data-icon="key">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#key"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Secret scanning alerts</button></h3>
+        <p class="tile-sub">history · issues · PRs · wikis</p>
+        <p class="tile-desc">Finds leaked credentials across your whole history, and checks if they still work.</p>
+        <ul class="badges"><li class="badge sp">Secret Protection</li><li class="badge public"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#globe"/></svg>Public repos</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge sp">Secret Protection</li><li class="badge public">Free for public repos</li></ul>
+          <p class="d-lede">Know which secrets have leaked, where, and whether they are still live.</p>
+          <ul class="d-points">
+            <li>Scans the full Git history, plus issues, pull requests, discussions and wikis.</li>
+            <li><b>Validity checks</b> tell you whether a token is still active, so you fix live ones first.</li>
+            <li><b>New:</b> also scans GitHub Actions workflow logs after each run (preview, 9 Nov 2026).</li>
+          </ul>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning">Docs · Secret scanning</a></li>
+            <li><a href="https://github.blog/changelog/2026-11-09-secret-scanning-detects-secrets-in-github-actions-workflow-logs">Changelog · Actions workflow logs, 9 Nov 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="push-protection" data-plan="sp" data-icon="shield-lock">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#shield-lock"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Push protection</button></h3>
+        <p class="tile-sub">git push → blocked</p>
+        <p class="tile-desc">Blocks the push before a secret ever lands in the repository.</p>
+        <ul class="badges"><li class="badge sp">Secret Protection</li><li class="badge public"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#globe"/></svg>Public repos</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge sp">Secret Protection</li><li class="badge public">Free for public repos</li></ul>
+          <p class="d-lede">Prevention beats clean-up: the secret never reaches the repository.</p>
+          <ul class="d-points">
+            <li>Blocks secrets pushed from the command line, the web UI and the API.</li>
+            <li><b>Delegated bypass</b>: bypass requests go to reviewers you designate.</li>
+            <li><b>Beyond patterns</b> (preview, 28 Oct): a classifier from Microsoft Applied Sciences also blocks secrets with no known format.</li>
+            <li><b>Block PRs with secrets</b> (preview, 9 Sep): a ruleset stops merges while secret alerts are open.</li>
+          </ul>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/secret-security/push-protection">Docs · Push protection</a></li>
+            <li><a href="https://docs.github.com/en/code-security/concepts/secret-security/delegated-bypass">Docs · Delegated bypass</a></li>
+            <li><a href="https://github.blog/changelog/2026-10-28-push-protection-beyond-predefined-secret-patterns">Changelog · Beyond patterns, 28 Oct 2026</a></li>
+            <li><a href="https://github.blog/changelog/2026-09-09-block-pull-requests-with-exposed-secrets-from-merging">Changelog · Block PRs with secrets, 9 Sep 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="ai-detected-secrets" data-plan="sp" data-icon="copilot">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#copilot"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">AI-detected secrets</button></h3>
+        <p class="tile-sub">generic passwords</p>
+        <p class="tile-desc">A purpose-built model catches passwords that no pattern can describe.</p>
+        <ul class="badges"><li class="badge sp">Secret Protection</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge sp">Secret Protection</li></ul>
+          <p class="d-lede">Regular expressions find tokens. AI finds the passwords people type by hand.</p>
+          <ul class="d-points">
+            <li>Copilot secret scanning detects unstructured secrets, like generic passwords, that patterns miss.</li>
+            <li>Since 7 Oct 2026, detection runs on a purpose-built model for leaked secrets.</li>
+          </ul>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/how-tos/secure-your-secrets/detect-secret-leaks/enabling-secret-scanning-for-generic-patterns">Docs · Generic secret detection</a></li>
+            <li><a href="https://github.blog/changelog/2026-10-07-purpose-built-model-for-leaked-secret-detection">Changelog · Purpose-built model, 7 Oct 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="agent-secret-scanning" data-plan="sp" data-icon="agent">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#agent"/></svg></span>
+          <span class="pill preview">Preview · 17 Nov</span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Secret scanning for agents</button></h3>
+        <p class="tile-sub">MCP Server · Copilot CLI</p>
+        <p class="tile-desc">Agents and IDEs check changes for secrets before anything is committed.</p>
+        <ul class="badges"><li class="badge sp">Secret Protection</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge sp">Secret Protection</li><li class="pill ga">GA · MCP Server</li><li class="pill preview">Preview · on demand</li></ul>
+          <p class="d-lede">Catch the secret while the agent is still writing the code.</p>
+          <ul class="d-points">
+            <li><b>GitHub MCP Server</b> (GA, 5 May 2026): agents and IDEs scan current changes for secrets before you commit.</li>
+            <li><b>Scan on demand</b> (preview, 17 Nov 2026): Copilot CLI, the Copilot app and Copilot code review check your changes for secrets.</li>
+          </ul>
+          <p class="d-note">Scan on demand is off by default.</p>
+          <ul class="d-links">
+            <li><a href="https://github.blog/changelog/2026-05-05-secret-scanning-with-github-mcp-server-is-now-generally-available">Changelog · MCP Server GA, 5 May 2026</a></li>
+            <li><a href="https://github.blog/changelog/2026-11-17-secret-scanning-on-demand-for-developers-and-agents">Changelog · Scan on demand, 17 Nov 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="custom-patterns" data-plan="sp" data-icon="sliders">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#sliders"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Custom patterns</button></h3>
+        <p class="tile-sub">regex · dry run</p>
+        <p class="tile-desc">Teach secret scanning your internal token formats; Copilot drafts the regex.</p>
+        <ul class="badges"><li class="badge sp">Secret Protection</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge sp">Secret Protection</li></ul>
+          <p class="d-lede">Your own credentials deserve the same protection as a cloud provider's.</p>
+          <ul class="d-points">
+            <li>Define patterns for a repository, an organization or the whole enterprise.</li>
+            <li><b>Dry run</b> a pattern against your repos before you publish it.</li>
+            <li><b>Copilot</b> can generate the regular expression from a description and examples.</li>
+            <li>Turn on push protection for a custom pattern to block it at push.</li>
+          </ul>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/secret-security/custom-patterns">Docs · Custom patterns</a></li>
+            <li><a href="https://docs.github.com/en/code-security/how-tos/secure-your-secrets/customize-leak-detection/generating-regular-expressions-for-custom-patterns-with-ai">Docs · Generate a regex with AI</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="public-monitoring" data-plan="sp" data-icon="globe">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#globe"/></svg></span>
+          <span class="pill ga">GA · 28 Oct</span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Public monitoring</button></h3>
+        <p class="tile-sub">all of public github.com</p>
+        <p class="tile-desc">Alerts you when your enterprise's secrets leak anywhere on public GitHub.</p>
+        <ul class="badges"><li class="badge sp">Secret Protection</li><li class="badge ghec">Enterprise Cloud</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge sp">Secret Protection</li><li class="badge ghec">Enterprise Cloud</li><li class="pill ga">GA · 28 Oct 2026</li></ul>
+          <p class="d-lede">Secrets leak beyond the repos you own: personal forks, open source projects, public issues.</p>
+          <ul class="d-points">
+            <li>Monitors all of public github.com and attributes leaked secrets to your enterprise, based on where your people commit.</li>
+            <li>Never scans private repositories.</li>
+            <li>Since 12 Nov 2026, each alert links directly to the leak.</li>
+          </ul>
+          <p class="d-note">Included with Secret Protection for enterprises.</p>
+          <ul class="d-links">
+            <li><a href="https://github.blog/changelog/2026-10-28-public-monitoring-for-enterprises-generally-available">Changelog · Public monitoring GA, 28 Oct 2026</a></li>
+            <li><a href="https://github.blog/changelog/2026-11-12-public-monitoring-alerts-now-have-direct-links">Changelog · Direct links, 12 Nov 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ 03 Code Security ============ -->
+  <section class="slide layer cs" id="code-security" data-slide aria-labelledby="h-cs">
+    <header class="layer-head">
+      <span class="layer-num" aria-hidden="true">03</span>
+      <div class="layer-title">
+        <h2 id="h-cs">Code Security</h2>
+        <p>CodeQL and AI Scan find vulnerabilities. Copilot fixes them.</p>
+      </div>
+      <button type="button" class="btn-icon layer-present" data-present-at="code-security" aria-label="Present this section" title="Present this section">
+        <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#screen-full"/></svg>
+      </button>
+    </header>
+    <div class="grid">
+
+      <article class="tile" id="code-scanning" data-plan="cs" data-icon="codescan">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#codescan"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Code scanning with CodeQL</button></h3>
+        <p class="tile-sub">codeql database analyze</p>
+        <p class="tile-desc">Semantic analysis finds vulnerabilities in every pull request.</p>
+        <ul class="badges"><li class="badge cs">Code Security</li><li class="badge public"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#globe"/></svg>Public repos</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge cs">Code Security</li><li class="badge public">Free for public repos</li></ul>
+          <p class="d-lede">CodeQL treats code as data, and queries it for vulnerabilities.</p>
+          <ul class="d-points">
+            <li><b>Default setup</b> turns CodeQL on in a few clicks; findings show up as alerts in the pull request.</li>
+            <li>The <b>CodeQL CLI</b> runs the same analysis locally or in another CI system.</li>
+            <li>Third-party tools upload SARIF results to the same alert list.</li>
+          </ul>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/code-scanning/code-scanning">Docs · Code scanning</a></li>
+            <li><a href="https://docs.github.com/en/code-security/concepts/code-scanning/codeql/codeql-cli">Docs · CodeQL CLI</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="ai-scan" data-plan="cs" data-icon="sparkle-fill">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#sparkle-fill"/></svg></span>
+          <span class="pill ga">GA · 15 Oct</span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">AI Scan</button></h3>
+        <p class="tile-sub">pull requests · repositories</p>
+        <p class="tile-desc">Agentic review that covers Shell, Terraform, Dockerfiles, PHP and more.</p>
+        <ul class="badges"><li class="badge cs">Code Security</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge cs">Code Security</li><li class="pill ga">GA · pull requests</li><li class="pill preview">Preview · repositories</li></ul>
+          <p class="d-lede">AI reaches the languages and formats a static analyzer doesn't.</p>
+          <ul class="d-points">
+            <li><b>AI Scan for pull requests</b> (GA, 15 Oct 2026): advisory findings in the PR; it doesn't block merges.</li>
+            <li><b>AI Scan for repositories</b> (preview, 28 Oct 2026): scans the default branch and skips what CodeQL already reports.</li>
+            <li>Start it in bulk across repositories, or drive it from the REST API.</li>
+          </ul>
+          <ul class="d-links">
+            <li><a href="https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available">Changelog · AI Scan for PRs GA, 15 Oct 2026</a></li>
+            <li><a href="https://github.blog/changelog/2026-10-28-ai-scan-for-repositories-in-public-preview">Changelog · AI Scan for repositories, 28 Oct 2026</a></li>
+            <li><a href="https://github.blog/changelog/2026-11-16-bulk-start-ai-scan-for-repositories">Changelog · Bulk start, 16 Nov 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="copilot-autofix" data-plan="cs" data-icon="copilot">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#copilot"/></svg></span>
+          <span class="pill ga">Agentic · GA</span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Copilot Autofix</button></h3>
+        <p class="tile-sub">assign to @copilot → draft PR</p>
+        <p class="tile-desc">Suggests the fix on each alert, or hands the alert to Copilot to open a PR.</p>
+        <ul class="badges"><li class="badge cs">Code Security</li><li class="badge public"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#globe"/></svg>Public repos</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge cs">Code Security</li><li class="badge public">Free for public repos</li></ul>
+          <p class="d-lede">Finding is half the job. Copilot does the other half.</p>
+          <ul class="d-points">
+            <li><b>Copilot Autofix</b> suggests a fix for code scanning alerts, right in the pull request.</li>
+            <li><b>Agentic autofix</b> (GA, 15 Oct 2026): assign alerts to Copilot; it fixes them, re-runs CodeQL and opens a draft PR.</li>
+            <li>Up to 25 alerts in one pull request.</li>
+          </ul>
+          <p class="d-note">Agentic autofix: GitHub Enterprise Cloud.</p>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/code-scanning/autofix-for-code-scanning">Docs · Autofix for code scanning</a></li>
+            <li><a href="https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability">Changelog · Agentic autofix GA, 15 Oct 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="dependency-review" data-plan="cs" data-icon="git-pull-request">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#git-pull-request"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Dependency review</button></h3>
+        <p class="tile-sub">dependency-review-action</p>
+        <p class="tile-desc">Shows vulnerable or non-compliant dependencies in the PR, before merge.</p>
+        <ul class="badges"><li class="badge cs">Code Security</li><li class="badge public"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#globe"/></svg>Public repos</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge cs">Code Security</li><li class="badge public">Free for public repos</li></ul>
+          <p class="d-lede">Stop a risky dependency at the door instead of chasing an alert later.</p>
+          <ul class="d-points">
+            <li>A clear diff of every dependency a pull request adds, removes or updates, with its known vulnerabilities.</li>
+            <li>The <b>dependency review action</b> fails the check to block risky changes.</li>
+            <li><b>License compliance</b> (GA, 16 Oct 2026): an enterprise-wide license policy, enforced by rulesets.</li>
+          </ul>
+          <p class="d-note">License compliance: GitHub Enterprise Cloud.</p>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/supply-chain-security/dependency-review">Docs · Dependency review</a></li>
+            <li><a href="https://github.blog/changelog/2026-10-16-open-source-license-compliance-generally-available">Changelog · License compliance GA, 16 Oct 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="security-campaigns" data-plan="cs" data-icon="megaphone">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#megaphone"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Security campaigns</button></h3>
+        <p class="tile-sub">org-wide · due date</p>
+        <p class="tile-desc">Rally teams to burn down security debt, with Autofix at scale.</p>
+        <ul class="badges"><li class="badge cs">Code Security</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge cs">Code Security</li></ul>
+          <p class="d-lede">Turn a backlog of alerts into a focused, time-boxed fix-it.</p>
+          <ul class="d-points">
+            <li>Group alerts across many repositories into a campaign, with a named contact and a due date.</li>
+            <li>Developers are notified and see the alerts in their normal workflow.</li>
+            <li>Copilot Autofix suggests a fix for each code scanning alert, or Copilot opens the PR.</li>
+          </ul>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/security-at-scale/about-security-campaigns">Docs · Security campaigns</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="ai-apps-scanning" data-plan="cs" data-icon="hubot">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#hubot"/></svg></span>
+          <span class="pill preview">Preview · 28 Oct</span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Code scanning for AI apps</button></h3>
+        <p class="tile-sub">prompt injection · agency</p>
+        <p class="tile-desc">Flags prompt injection, data disclosure and excessive agency in AI code.</p>
+        <ul class="badges"><li class="badge cs">Code Security</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge cs">Code Security</li><li class="pill preview">Preview · github.com</li></ul>
+          <p class="d-lede">New code, new risks: agents that read untrusted content and act on it.</p>
+          <ul class="d-points">
+            <li>Detects <b>indirect prompt injection</b>, the top risk in the OWASP Top 10 for LLM Applications.</li>
+            <li>Also flags <b>sensitive information disclosure</b> and <b>excessive agency</b>.</li>
+            <li>Runs automatically on pull requests.</li>
+          </ul>
+          <p class="d-note">Public preview on github.com; not yet on GHES.</p>
+          <ul class="d-links">
+            <li><a href="https://github.blog/changelog/2026-10-28-code-scanning-for-ai-applications-in-public-preview">Changelog · Code scanning for AI apps, 28 Oct 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ 04 At scale ============ -->
+  <section class="slide layer all" id="at-scale" data-slide aria-labelledby="h-all">
+    <header class="layer-head">
+      <span class="layer-num" aria-hidden="true">04</span>
+      <div class="layer-title">
+        <h2 id="h-all">At scale &amp; for agents</h2>
+        <p>See risk across the organization, and keep agent-written code safe.</p>
+      </div>
+      <button type="button" class="btn-icon layer-present" data-present-at="at-scale" aria-label="Present this section" title="Present this section">
+        <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#screen-full"/></svg>
+      </button>
+    </header>
+    <div class="grid four">
+
+      <article class="tile" id="security-overview" data-plan="both" data-icon="graph">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#graph"/></svg></span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Security overview</button></h3>
+        <p class="tile-sub">organization · enterprise</p>
+        <p class="tile-desc">One view of risk, coverage and remediation across every repository.</p>
+        <ul class="badges"><li class="badge sp">Secret Protection</li><li class="badge cs">Code Security</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge sp">Secret Protection</li><li class="badge cs">Code Security</li></ul>
+          <p class="d-lede">The security team's dashboard, for the organization and the enterprise.</p>
+          <ul class="d-points">
+            <li>See which repositories have which features on, and where alerts pile up.</li>
+            <li>Track alerts opened, fixed and bypassed over time.</li>
+          </ul>
+          <p class="d-note">Comes with either product.</p>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/security-at-scale/security-overview">Docs · Security overview</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="risk-assessment" data-plan="free" data-icon="checklist">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#checklist"/></svg></span>
+          <span class="pill new">Auto on Team · 18 Nov</span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Security risk assessments</button></h3>
+        <p class="tile-sub">secrets · code</p>
+        <p class="tile-desc">A free snapshot of exposed secrets and code vulnerabilities, per organization.</p>
+        <ul class="badges"><li class="badge free">Free</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge free">Free</li><li class="badge ghec">Team &amp; Enterprise Cloud</li></ul>
+          <p class="d-lede">The best first step: see your real exposure before deciding anything.</p>
+          <ul class="d-points">
+            <li><b>Secret risk assessment</b>: which secrets are exposed across the organization, and where.</li>
+            <li><b>Code security risk assessment</b>: scans up to 20 repositories and shows vulnerabilities, their severity, and how many Copilot Autofix can fix.</li>
+            <li>Since 18 Nov 2026, they run automatically for organizations on GitHub Team.</li>
+          </ul>
+          <p class="d-note">No license needed; Actions minutes for the scan are not charged.</p>
+          <ul class="d-links">
+            <li><a href="https://docs.github.com/en/code-security/concepts/code-scanning/risk-assessment">Docs · Code security risk assessment</a></li>
+            <li><a href="https://docs.github.com/en/code-security/how-tos/secure-at-scale/configure-organization-security/configure-specific-tools/assess-your-secret-risk">Docs · Secret risk assessment</a></li>
+            <li><a href="https://github.blog/changelog/2026-11-18-security-risk-assessments-run-automatically-on-github-team">Changelog · Automatic on Team, 18 Nov 2026</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="agent-validation" data-plan="free" data-icon="verified">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#verified"/></svg></span>
+          <span class="pill ga">GA · 9 Jun</span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Security validation for coding agents</button></h3>
+        <p class="tile-sub">Copilot · Claude · Codex</p>
+        <p class="tile-desc">Agent-written code is checked for vulnerabilities, risky dependencies and secrets.</p>
+        <ul class="badges"><li class="badge free">Included</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge free">No GHAS license needed</li><li class="pill ga">GA · 9 Jun 2026</li></ul>
+          <p class="d-lede">Whichever agent writes the code, it gets the same security checks.</p>
+          <ul class="d-points">
+            <li>CodeQL, the Advisory Database and secret scanning check code from Copilot cloud agent and third-party agents such as Claude and OpenAI Codex.</li>
+            <li>If anything is found, the agent tries to fix it before finalizing the pull request.</li>
+            <li>On by default; follows your repository's Copilot settings.</li>
+          </ul>
+          <ul class="d-links">
+            <li><a href="https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents">Changelog · Third-party agents, 9 Jun 2026</a></li>
+            <li><a href="https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/risks-and-mitigations">Docs · Risks and mitigations</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile" id="package-firewall" data-plan="ghec" data-icon="package">
+        <div class="tile-top">
+          <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#package"/></svg></span>
+          <span class="pill preview">Preview · 20 Oct</span>
+        </div>
+        <h3 class="tile-name"><button type="button" class="tile-open">Package firewall</button></h3>
+        <p class="tile-sub">npm install → policy</p>
+        <p class="tile-desc">An install-time policy gate between your agents, CI and the registry.</p>
+        <ul class="badges"><li class="badge ghec">Enterprise Cloud</li></ul>
+        <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+        <div class="tile-detail" hidden>
+          <ul class="badges"><li class="badge ghec">Enterprise Cloud</li><li class="pill preview">Preview · npm</li></ul>
+          <p class="d-lede">Agents and CI runners install packages with no human in the loop. The firewall checks first.</p>
+          <ul class="d-points">
+            <li>Coding agents and CI hosts fetch packages through the firewall instead of the public registry.</li>
+            <li>Policies: a cooldown period, Advisory Database malware and vulnerability checks, attestation downgrades.</li>
+            <li>Blocked by mistake? Request an exception.</li>
+          </ul>
+          <p class="d-note">npm only. Free during the preview; usage-based at GA.</p>
+          <ul class="d-links">
+            <li><a href="https://github.blog/changelog/2026-10-20-github-package-firewall-in-public-preview">Changelog · Package firewall, 20 Oct 2026</a></li>
+            <li><a href="https://docs.github.com/en/enterprise-cloud@latest/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/protecting-endpoints-with-package-firewall">Docs · Protecting endpoints</a></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ Get started ============ -->
+  <section class="slide closing" id="get-started" data-slide aria-labelledby="h-start">
+    <div class="closing-copy">
+      <p class="eyebrow">Get started</p>
+      <h2 id="h-start">Three steps to a safer organization</h2>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div><b>Run a free risk assessment</b><span>See exposed secrets and code vulnerabilities in your organization.</span></div></li>
+        <li><span class="step-n">2</span><div><b>Turn on what fits</b><span>Secret Protection, Code Security, or both.</span></div></li>
+        <li><span class="step-n">3</span><div><b>Track and burn down</b><span>Security overview to measure, campaigns to fix at scale.</span></div></li>
+      </ol>
+    </div>
+    <figure class="closing-qr">
+      <div class="qr" data-qr-render aria-hidden="true"></div>
+      <figcaption><b>Take this page with you</b><span class="qr-url" data-qr-url></span></figcaption>
+    </figure>
+  </section>
+
+</main>
+
+<footer class="footer" id="sources">
+  <div class="footer-inner">
+    <div>
+      <h2>Sources</h2>
+      <ul class="src">
+        <li><a href="https://docs.github.com/en/code-security/getting-started/github-security-features">Docs · GitHub security features</a> (what each plan and product includes)</li>
+        <li><a href="https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security">Docs · About GitHub Advanced Security</a></li>
+        <li><a href="https://github.blog/changelog/2025-03-04-introducing-github-secret-protection-and-github-code-security/">Changelog · Introducing Secret Protection and Code Security, 4 Mar 2025</a></li>
+        <li><a href="https://github.com/security/advanced-security/secret-protection">Secret Protection</a> and <a href="https://github.com/security/advanced-security/code-security">Code Security</a> product pages</li>
+        <li>Each tile links to its own docs and changelog entries.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Read this fairly</h2>
+      <ul class="src">
+        <li>Status as of 20 Nov 2026. Previews can change before general availability.</li>
+        <li>Availability differs by plan and deployment (github.com, Enterprise Cloud, GHES). Check the docs.</li>
+        <li>"Paid add-on" applies to private and internal repositories.</li>
+      </ul>
+      <p class="credits">Prepared by your GitHub account team from public sources. Built with <a href="https://primer.style">Primer</a> colors, <a href="https://primer.style/octicons">Octicons</a> and <a href="https://github.com/github/mona-sans">Mona Sans</a>. Format inspired by <a href="https://guigui42.github.io/copilot-panorama/">Copilot Panorama</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Detail dialog -->
+<dialog class="detail" id="detail" aria-labelledby="detail-title">
+  <div class="detail-shell">
+    <header class="detail-head">
+      <span class="tile-icon" data-d-icon><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#shield"/></svg></span>
+      <div class="detail-titles">
+        <p class="detail-section" data-d-section></p>
+        <h2 id="detail-title" data-d-title></h2>
+        <p class="tile-sub" data-d-sub></p>
+      </div>
+      <button type="button" class="btn-icon" data-close aria-label="Close">
+        <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#x"/></svg>
+      </button>
+    </header>
+    <div class="detail-body">
+      <div class="detail-content" data-d-body></div>
+      <figure class="detail-qr">
+        <div class="qr" data-d-qr aria-hidden="true"></div>
+        <figcaption>Scan for this feature</figcaption>
+      </figure>
+    </div>
+    <footer class="detail-foot">
+      <button type="button" class="btn" data-d-prev><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#chevron-left"/></svg><span data-d-prev-name>Previous</span></button>
+      <span class="detail-count" data-d-count></span>
+      <button type="button" class="btn" data-d-next><span data-d-next-name>Next</span><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"/></svg></button>
+    </footer>
+  </div>
+</dialog>
+
+<!-- QR dialog -->
+<dialog class="qr-dialog" id="qr-dialog" aria-labelledby="qr-title">
+  <div class="qr-shell">
+    <button type="button" class="btn-icon qr-close" data-close aria-label="Close">
+      <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#x"/></svg>
+    </button>
+    <h2 id="qr-title">Scan to open GHAS Panorama</h2>
+    <p class="qr-hint">Point your phone camera at the code, or take a photo for later.</p>
+    <div class="qr qr-big" data-qr-render aria-hidden="true"></div>
+    <p class="qr-url" data-qr-url></p>
+    <button type="button" class="btn" data-copy-link><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#copy"/></svg><span>Copy link</span></button>
+  </div>
+</dialog>
+
+<!-- Presentation controls -->
+<div class="present-bar" role="toolbar" aria-label="Presentation controls" hidden>
+  <button type="button" class="btn-icon" data-slide-prev aria-label="Previous slide"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#chevron-left"/></svg></button>
+  <span class="slide-count" data-slide-count aria-live="polite"></span>
+  <button type="button" class="btn-icon" data-slide-next aria-label="Next slide"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"/></svg></button>
+  <span class="bar-sep" aria-hidden="true"></span>
+  <button type="button" class="btn-icon" data-qr aria-label="Show QR code"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#device-mobile"/></svg></button>
+  <button type="button" class="btn-icon" data-theme-toggle aria-label="Switch theme">
+    <svg class="octicon i-sun" aria-hidden="true"><use href="assets/icons.svg#sun"/></svg>
+    <svg class="octicon i-moon" aria-hidden="true"><use href="assets/icons.svg#moon"/></svg>
+  </button>
+  <button type="button" class="btn-icon" data-present-exit aria-label="Exit presentation"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#screen-normal"/></svg></button>
+</div>
+
+</body>
+</html>
