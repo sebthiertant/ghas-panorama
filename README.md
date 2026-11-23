@@ -1,6 +1,6 @@
 # GHAS Panorama
 
-GitHub Advanced Security at a glance. This is a tile-first page for colleagues and customers. It shows **what every GitHub plan includes for free**, and what the two standalone products, **Secret Protection** and **Code Security**, add. Click any tile for a short summary and links to the docs.
+GitHub Advanced Security at a glance. This is a tile-first page for colleagues and customers. It shows **the security foundations included without an add-on** (with plan and visibility limits called out), and what the two standalone products, **Secret Protection** and **Code Security**, add. Click any tile for a short summary and links to the docs.
 
 **Live:** https://sebthiertant.github.io/ghas-panorama/
 

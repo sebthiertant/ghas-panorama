@@ -69,9 +69,9 @@
     <div class="products">
       <a class="product free" href="#included" data-goto="included">
         <span class="p-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#dependabot"/></svg></span>
-        <span class="p-kicker">Free <span aria-hidden="true">·</span> every plan</span>
-        <span class="p-name">Included with GitHub</span>
-        <span class="p-line">Dependabot, dependency graph, advisories, push protection for users.</span>
+        <span class="p-kicker">No add-on needed</span>
+        <span class="p-name">Security foundations</span>
+        <span class="p-line">Dependabot, dependency graph, advisories, rulesets. Scope varies by plan and visibility.</span>
         <span class="p-go">5 features <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
       </a>
       <a class="product sp" href="#secret-protection" data-goto="secret-protection">
@@ -91,7 +91,8 @@
     </div>
 
     <ul class="legend" aria-label="Legend">
-      <li><span class="badge free">Included</span> free in every plan</li>
+      <li><span class="badge free">Included</span> no security add-on needed</li>
+      <li><span class="badge scope">Public repos only</span> limited by plan or visibility</li>
       <li><span class="badge sp">Secret Protection</span> <span class="badge cs">Code Security</span> paid add-ons for private and internal repos</li>
       <li><span class="badge public"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#globe"/></svg>Public repos</span> also free for public repos</li>
       <li><span class="pill preview">Preview</span> may change before GA</li>
@@ -103,8 +104,8 @@
     <header class="layer-head">
       <span class="layer-num" aria-hidden="true">01</span>
       <div class="layer-title">
-        <h2 id="h-included">Included with GitHub</h2>
-        <p>Supply-chain and security basics, free in every plan.</p>
+        <h2 id="h-included">Security foundations</h2>
+        <p>Included capabilities. Availability depends on plan and repository visibility.</p>
       </div>
       <button type="button" class="btn-icon layer-present" data-present-at="included" aria-label="Present this section" title="Present this section">
         <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#screen-full"/></svg>
@@ -120,7 +121,7 @@
         <p class="tile-sub">.github/dependabot.yml</p>
         <div class="compare">
           <div class="cmp free">
-            <p class="cmp-h">Included in every plan</p>
+            <p class="cmp-h">Included, all repos</p>
             <ul>
               <li>Vulnerability alerts</li>
               <li>Malware alerts</li>
@@ -133,20 +134,20 @@
             <p class="cmp-h">Adds with Code Security</p>
             <ul>
               <li>Custom auto-triage rules</li>
-              <li>Dependency review in PRs</li>
-              <li>License compliance</li>
+              <li>Assign alerts to people or Copilot</li>
             </ul>
           </div>
         </div>
         <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
         <div class="tile-detail" hidden>
           <ul class="badges"><li class="badge free">Included</li><li class="badge cs">+ Code Security</li></ul>
-          <p class="d-lede">Dependabot checks every dependency against the GitHub Advisory Database and opens the pull request that fixes it.</p>
+          <p class="d-lede">Dependabot checks supported dependencies against the GitHub Advisory Database and opens the pull request that fixes them.</p>
           <ul class="d-points">
-            <li><b>Alerts</b> for vulnerable dependencies, plus <b>malware alerts</b> for npm, pip, Maven, NuGet, Go, Composer, RubyGems and Rust.</li>
+            <li><b>Alerts</b> for vulnerable dependencies in supported ecosystems, plus <b>malware alerts</b> for npm, pip, Maven, NuGet, Go, Composer, RubyGems and Rust.</li>
             <li><b>Security updates</b> bump to the minimum patched version; <b>version updates</b> keep everything current.</li>
-            <li><b>GitHub presets</b> auto-dismiss low-impact alerts in development dependencies (on by default for public repos).</li>
+            <li><b>GitHub presets</b> auto-dismiss low-impact alerts in development dependencies: on by default for public repos, opt-in for private repos.</li>
             <li><b>Custom auto-triage rules</b> dismiss, snooze or open PRs for the alerts you choose. They need Code Security on private organization repos.</li>
+            <li><b>Assigning alerts</b> to people or to Copilot needs a Code Security license.</li>
             <li><b>New:</b> reachability analysis shows whether your code calls the vulnerable function. Preview, Enterprise Cloud, JavaScript and TypeScript.</li>
           </ul>
           <p class="d-note">Malware alerts: github.com and GHES 3.22+. Reachability needs no GHAS license during the preview.</p>
@@ -189,7 +190,7 @@
         </div>
         <h3 class="tile-name"><button type="button" class="tile-open">Advisories &amp; security policy</button></h3>
         <p class="tile-sub">GHSA · SECURITY.md</p>
-        <p class="tile-desc">The Advisory Database feeds every alert; maintainers disclose privately.</p>
+        <p class="tile-desc">The Advisory Database feeds every alert; public-repo maintainers disclose privately.</p>
         <ul class="badges"><li class="badge free">Included</li></ul>
         <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
         <div class="tile-detail" hidden>
@@ -200,6 +201,7 @@
             <li><b>Security policy</b> (SECURITY.md) tells researchers how to report a vulnerability.</li>
             <li><b>Repository security advisories</b> let maintainers of public repos fix and publish a vulnerability privately, and request a CVE.</li>
           </ul>
+          <p class="d-note">Advisory Database and security policy: all repos. Repository security advisories: public repos only.</p>
           <ul class="d-links">
             <li><a href="https://docs.github.com/en/code-security/concepts/vulnerability-reporting-and-management/github-advisory-database">Docs · GitHub Advisory Database</a></li>
             <li><a href="https://docs.github.com/en/code-security/concepts/vulnerability-reporting-and-management/repository-security-advisories">Docs · Repository security advisories</a></li>
@@ -213,18 +215,20 @@
           <span class="tile-icon"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#shield-check"/></svg></span>
         </div>
         <h3 class="tile-name"><button type="button" class="tile-open">Push protection for users</button></h3>
-        <p class="tile-sub">on by default</p>
-        <p class="tile-desc">Stops anyone pushing a known secret to a public repository.</p>
-        <ul class="badges"><li class="badge free">Included</li></ul>
+        <p class="tile-sub">per user · github.com</p>
+        <p class="tile-desc">Blocks supported secrets in your pushes to public repositories. Private and internal repos need Secret Protection.</p>
+        <ul class="badges"><li class="badge free">Included</li><li class="badge scope">Public repos only</li></ul>
         <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
         <div class="tile-detail" hidden>
-          <ul class="badges"><li class="badge free">Included</li></ul>
-          <p class="d-lede">Every github.com user is protected from leaking supported secrets in public, with no setup.</p>
+          <ul class="badges"><li class="badge free">Included</li><li class="badge scope">Public repos only</li></ul>
+          <p class="d-lede">A personal safety net for github.com users when they push to public repositories. It is not an organization control.</p>
           <ul class="d-points">
-            <li><b>Push protection for users</b> is on by default and blocks pushes of supported secrets to public repositories.</li>
+            <li><b>Push protection for users</b> is on by default and blocks pushes of supported secrets to <b>public</b> repositories only.</li>
+            <li>It is a per-user setting: each user can turn it off or bypass a block, and organizations cannot enforce it.</li>
+            <li>A bypass creates no alert unless the repository itself has push protection on, which needs Secret Protection.</li>
             <li><b>Secret scanning for partners</b>: when a provider's token leaks in a public repo or on npm, GitHub tells the provider so it can be revoked.</li>
           </ul>
-          <p class="d-note">For private and internal repos, see Secret Protection.</p>
+          <p class="d-note">Private and internal repos, org-enforced blocking and bypass alerts: Secret Protection.</p>
           <ul class="d-links">
             <li><a href="https://docs.github.com/en/code-security/how-tos/secure-your-secrets/prevent-future-leaks/manage-user-push-protection">Docs · Push protection for users</a></li>
             <li><a href="https://docs.github.com/en/code-security/tutorials/secret-scanning-partner-program">Docs · Secret scanning partner program</a></li>
@@ -239,16 +243,16 @@
         <h3 class="tile-name"><button type="button" class="tile-open">Rulesets &amp; attestations</button></h3>
         <p class="tile-sub">rules · provenance</p>
         <p class="tile-desc">Enforce how code merges, and prove where an artifact came from.</p>
-        <ul class="badges"><li class="badge free">Included</li></ul>
+        <ul class="badges"><li class="badge free">Included</li><li class="badge scope">Plan-dependent</li></ul>
         <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
         <div class="tile-detail" hidden>
-          <ul class="badges"><li class="badge free">Included</li></ul>
+          <ul class="badges"><li class="badge free">Included</li><li class="badge scope">Plan-dependent</li></ul>
           <p class="d-lede">Guardrails on how code gets in, and signed proof of what came out.</p>
           <ul class="d-points">
             <li><b>Repository rulesets</b> enforce branch and tag rules, such as required reviews and status checks, with named bypass permissions.</li>
             <li><b>Artifact attestations</b> sign build provenance with Sigstore so anyone can verify what was built, where and how.</li>
           </ul>
-          <p class="d-note">Attestations for private and internal repos need GitHub Enterprise Cloud.</p>
+          <p class="d-note">Rulesets: public repos on Free; private repos need Pro, Team or Enterprise Cloud. Push rulesets: Team and up. Attestations for private and internal repos need Enterprise Cloud.</p>
           <ul class="d-links">
             <li><a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets">Docs · About rulesets</a></li>
             <li><a href="https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations">Docs · Artifact attestations</a></li>
@@ -613,16 +617,16 @@
         <h3 class="tile-name"><button type="button" class="tile-open">Security overview</button></h3>
         <p class="tile-sub">organization · enterprise</p>
         <p class="tile-desc">One view of risk, coverage and remediation across every repository.</p>
-        <ul class="badges"><li class="badge sp">Secret Protection</li><li class="badge cs">Code Security</li></ul>
+        <ul class="badges"><li class="badge scope">Richer with</li><li class="badge sp">Secret Protection</li><li class="badge cs">Code Security</li></ul>
         <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
         <div class="tile-detail" hidden>
-          <ul class="badges"><li class="badge sp">Secret Protection</li><li class="badge cs">Code Security</li></ul>
+          <ul class="badges"><li class="badge scope">Richer with</li><li class="badge sp">Secret Protection</li><li class="badge cs">Code Security</li></ul>
           <p class="d-lede">The security team's dashboard, for the organization and the enterprise.</p>
           <ul class="d-points">
             <li>See which repositories have which features on, and where alerts pile up.</li>
             <li>Track alerts opened, fixed and bypassed over time.</li>
           </ul>
-          <p class="d-note">Comes with either product.</p>
+          <p class="d-note">Baseline views (such as Dependabot data and risk assessments) for Team and Enterprise organizations. Secret scanning and code scanning data come with the matching product.</p>
           <ul class="d-links">
             <li><a href="https://docs.github.com/en/code-security/concepts/security-at-scale/security-overview">Docs · Security overview</a></li>
           </ul>
@@ -637,7 +641,7 @@
         <h3 class="tile-name"><button type="button" class="tile-open">Security risk assessments</button></h3>
         <p class="tile-sub">secrets · code</p>
         <p class="tile-desc">A free snapshot of exposed secrets and code vulnerabilities, per organization.</p>
-        <ul class="badges"><li class="badge free">Free</li></ul>
+        <ul class="badges"><li class="badge free">Free</li><li class="badge scope">Team &amp; Enterprise</li></ul>
         <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
         <div class="tile-detail" hidden>
           <ul class="badges"><li class="badge free">Free</li><li class="badge ghec">Team &amp; Enterprise Cloud</li></ul>
@@ -663,7 +667,7 @@
         </div>
         <h3 class="tile-name"><button type="button" class="tile-open">Security validation for coding agents</button></h3>
         <p class="tile-sub">Copilot · Claude · Codex</p>
-        <p class="tile-desc">Agent-written code is checked for vulnerabilities, risky dependencies and secrets.</p>
+        <p class="tile-desc">Code written by supported coding agents is checked for vulnerabilities, risky dependencies and secrets.</p>
         <ul class="badges"><li class="badge free">Included</li></ul>
         <span class="tile-more" aria-hidden="true">View details <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
         <div class="tile-detail" hidden>
@@ -674,6 +678,7 @@
             <li>If anything is found, the agent tries to fix it before finalizing the pull request.</li>
             <li>On by default; follows your repository's Copilot settings.</li>
           </ul>
+          <p class="d-note">Covers agent sessions only, not the rest of the repository. Repo-wide scanning needs Secret Protection and Code Security.</p>
           <ul class="d-links">
             <li><a href="https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents">Changelog · Third-party agents, 9 Jun 2026</a></li>
             <li><a href="https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/risks-and-mitigations">Docs · Risks and mitigations</a></li>
@@ -742,6 +747,7 @@
       <ul class="src">
         <li>Status as of 20 Nov 2026. Previews can change before general availability.</li>
         <li>Availability differs by plan and deployment (github.com, Enterprise Cloud, GHES). Check the docs.</li>
+        <li>"Included" means no security add-on is needed. Plan and visibility limits are shown on each tile.</li>
         <li>"Paid add-on" applies to private and internal repositories.</li>
       </ul>
       <p class="credits">Prepared by your GitHub account team from public sources. Built with <a href="https://primer.style">Primer</a> colors, <a href="https://primer.style/octicons">Octicons</a> and <a href="https://github.com/github/mona-sans">Mona Sans</a>. Format inspired by <a href="https://guigui42.github.io/copilot-panorama/">Copilot Panorama</a>.</p>

@@ -212,6 +212,7 @@ h1 .l3 { color: var(--fgColor-default); }
   font-size: .75rem; font-weight: 500; line-height: 1.375rem; white-space: nowrap;
 }
 .badge.public { --c: var(--fgColor-muted); --c-bg: transparent; --c-border: var(--borderColor-default); }
+.badge.scope { --c: var(--fgColor-attention); --c-bg: var(--bgColor-attention-muted); --c-border: var(--borderColor-attention-muted); }
 .badge .octicon { width: .75rem; height: .75rem; }
 .pill {
   display: inline-flex; align-items: center; gap: .375rem;
