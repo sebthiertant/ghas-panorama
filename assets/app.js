@@ -1,4 +1,4 @@
-/* GHAS Panorama: theme, QR codes, tile details and presentation mode. No dependencies besides qrcode.js. */
+/* GHAS Panorama: theme, QR codes, workflow labels, headline routes and presentation mode. */
 (() => {
   "use strict";
 
@@ -53,6 +53,108 @@
   const pageQr = qrSvg(BASE);
   $$("[data-qr-render]").forEach((el) => { el.innerHTML = pageQr; });
   $$("[data-qr-url]").forEach((el) => { el.textContent = prettyUrl(BASE); });
+
+  /* ---------- Workflow-scoped usage labels and public sources ---------- */
+  const docs = "https://docs.github.com/en/";
+  const billing = docs + "billing/concepts/product-billing/github-advanced-security#how-ai-feature-usage-is-billed";
+  const copilotPlans = docs + "copilot/get-started/plans";
+  const autofix = docs + "code-security/concepts/code-scanning/autofix-for-code-scanning";
+  const onDemand = "https://github.blog/changelog/2026-11-17-secret-scanning-on-demand-for-developers-and-agents/";
+  const usage = {
+    dependabot: {
+      credits: true, copilot: true, scope: "Copilot assignment only",
+      note: "Standard Dependabot alerts and updates do not use Copilot. Assigning an alert to Copilot starts an agent session using your enabled Copilot access and AI credits. Alert assignment also requires Code Security, including on public repositories.",
+      sources: [[docs + "code-security/concepts/supply-chain-security/dependabot-alerts", "Alert assignment"], [copilotPlans, "Copilot access and usage"]],
+    },
+    "ai-detected-secrets": {
+      credits: true, scope: "AI push protection only",
+      note: "Scanning for AI-detected secrets does not require a Copilot subscription. The AI-credit label applies specifically to optional push protection for AI-detected secrets, not to all secret scanning. Each scanned push can consume Secret Protection AI credits even when nothing is blocked.",
+      sources: [[docs + "code-security/how-tos/secure-your-secrets/detect-secret-leaks/enabling-secret-scanning-for-ai-detected-secrets", "Scanning access"], [billing, "AI push protection billing"]],
+    },
+    "agent-secret-scanning": {
+      credits: true, copilot: true, scope: "On-demand Copilot workflow",
+      note: "On-demand scanning in Copilot CLI, the app, SDK integrations and code review consumes Secret Protection AI credits. No additional plan is required for these Copilot experiences; SDK authentication requirements still apply. These labels describe that on-demand workflow, not the separate GitHub MCP Server integration.",
+      sources: [[onDemand, "On-demand availability and billing"]],
+    },
+    "ai-scan": {
+      credits: true,
+      note: "Pull-request scans and on-demand repository scans consume Code Security AI credits, including eligible public repositories. No Copilot license is required. Eligible included credits are used first; further usage is metered and subject to budgets.",
+      sources: [[docs + "code-security/concepts/code-scanning/ai-powered-security-detections", "Pull-request scans"], [docs + "code-security/concepts/code-scanning/ai-scan-for-repositories", "Repository scans"], [billing, "AI-credit billing"]],
+    },
+    "copilot-autofix": {
+      credits: true, scope: "Agentic autofix only",
+      note: "Classic Copilot Autofix suggestions do not consume AI credits. Assigning alerts to agentic autofix consumes Code Security AI credits and Actions minutes. Agentic autofix does not require a Copilot license; repository eligibility and administrator enablement still apply.",
+      sources: [[autofix, "Autofix access and usage"], [billing, "AI-credit billing"]],
+    },
+    "security-campaigns": {
+      credits: true, scope: "Agentic fixes only",
+      note: "The label applies when you assign campaign alerts to agentic autofix: each assignment starts a session that consumes Code Security AI credits and Actions minutes. Creating or tracking a campaign is not the metered action. Classic Autofix suggestions do not consume AI credits.",
+      sources: [[autofix, "Agentic autofix in campaigns"]],
+    },
+    "ai-apps-scanning": {
+      credits: true,
+      note: "AI applications scanning consumes AI credits in addition to its Advanced Security license requirement. Eligible public repositories are also included in this billing requirement. Preview availability and enablement rules apply.",
+      sources: [[docs + "code-security/concepts/code-scanning/ai-applications-scanning-for-pull-requests", "AI application scanning billing"]],
+    },
+    "agent-validation": {
+      copilot: true, scope: "For the Copilot workflow",
+      note: "The Copilot workflow uses your enabled Copilot agent access. Automatic security validation itself requires no Advanced Security license; the underlying agent session has its own usage and compute billing. Supported third-party agents follow their own access requirements. This is not a separate license for the security checks.",
+      sources: [["https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents/", "Security validation"], [copilotPlans, "Copilot access and usage"]],
+    },
+  };
+  const usageChip = (kind) => `<span class="usage-chip usage-${kind}"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#${kind === "credits" ? "sparkle-fill" : "copilot"}"/></svg>${kind === "credits" ? "AI credits" : "Copilot access"}</span>`;
+  for (const [id, info] of Object.entries(usage)) {
+    const tile = document.getElementById(id);
+    const top = $(".tile-top", tile);
+    const flags = document.createElement("div");
+    flags.className = "usage-flags";
+    const status = $(".pill", top);
+    if (status) flags.append(status);
+    const label = document.createElement("div");
+    label.className = "usage-label";
+    label.id = `${id}-usage`;
+    const chips = (info.credits ? usageChip("credits") : "") + (info.copilot ? usageChip("copilot") : "");
+    label.innerHTML = `<div class="usage-chips">${chips}</div>${info.scope ? `<small>${info.scope}</small>` : ""}`;
+    flags.append(label);
+    top.append(flags);
+    $(".tile-open", tile).setAttribute("aria-describedby", label.id);
+    const note = document.createElement("section");
+    note.className = "usage-detail";
+    note.innerHTML = `<h4>AI usage &amp; access</h4><div class="usage-chips">${chips}</div><p>${info.note}</p><ul class="d-links">${info.sources.map(([url, title]) => `<li><a href="${url}">${title}</a></li>`).join("")}</ul>`;
+    $(".d-lede", tile).after(note);
+  }
+
+  /* ---------- Non-crossing headline routes ---------- */
+  const main = $("#main");
+  const rails = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  rails.setAttribute("class", "relation-rails");
+  rails.setAttribute("aria-hidden", "true");
+  main.prepend(rails);
+  const routes = ["free", "sp", "cs"].map((color) => {
+    const link = $(`.route-link.${color}`);
+    return { color, port: $(".route-port", link), badge: $(`#${link.dataset.goto} .layer-num`) };
+  });
+  function drawRoutes() {
+    if (!rails.getClientRects().length) return;
+    const origin = main.getBoundingClientRect();
+    let width = 0, height = 0;
+    const tracks = routes.map(({ color, port, badge }) => {
+      const a = port.getBoundingClientRect(), b = badge.getBoundingClientRect();
+      const x = a.left + a.width / 2 - origin.left, y1 = a.bottom - origin.top;
+      const x2 = b.left - origin.left, y2 = b.top + b.height / 2 - origin.top;
+      const radius = 10;
+      width = Math.max(width, x2); height = Math.max(height, y2);
+      return `<path class="rail ${color}" d="M${x} ${y1} V${y2 - radius} Q${x} ${y2} ${x + radius} ${y2} H${x2}"/>`;
+    });
+    rails.setAttribute("width", Math.ceil(width) + 2);
+    rails.setAttribute("height", Math.ceil(height) + 2);
+    rails.innerHTML = tracks.join("");
+  }
+  const layout = new ResizeObserver(drawRoutes);
+  $$("main > .slide, #headline").forEach((el) => layout.observe(el));
+  window.addEventListener("resize", drawRoutes);
+  document.fonts.ready.then(drawRoutes);
+  drawRoutes();
 
   /* ---------- Elements ---------- */
   const detail = $("#detail");
@@ -194,13 +296,6 @@
     slideNext.disabled = slideIdx === slides.length - 1;
   }
 
-  function visibleSlideIndex() {
-    const line = window.innerHeight * 0.35;
-    let idx = 0;
-    slides.forEach((s, k) => { if (s.getBoundingClientRect().top <= line) idx = k; });
-    return idx;
-  }
-
   async function enterPresent(index) {
     if (index < 0) index = 0;
     if (isPresenting()) { showSlide(index); return; }
@@ -225,7 +320,7 @@
 
   function exitPresent() {
     if (!isPresenting()) return;
-    const current = slides[slideIdx];
+    const current = slides[slideIdx].id === "scan-to-follow" ? $("#top") : slides[slideIdx];
     html.classList.remove("present");
     bar.hidden = true;
     slides.forEach((s) => s.classList.remove("is-current"));
@@ -297,7 +392,7 @@
     if (k === "p" || k === "P") {
       e.preventDefault();
       if (isPresenting()) exitPresent();
-      else enterPresent(visibleSlideIndex());
+      else enterPresent(0);
       return;
     }
     if (k === "q" || k === "Q") { openQr(); return; }

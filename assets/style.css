@@ -170,6 +170,39 @@ html[data-theme="dark"] .i-moon, html[data-theme="light"] .i-sun { display: none
 .slide { width: 100%; max-width: 80rem; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); }
 .layer { padding-top: 3.5rem; scroll-margin-top: 4rem; }
 .closing { padding-top: 4rem; padding-bottom: 4rem; }
+#main { position: relative; }
+
+/* ---------- Headline routes ---------- */
+h1 .route-link { position: relative; display: inline-block; color: var(--c); }
+h1 .route-link:hover { color: var(--c); text-decoration: none; }
+h1 .route-port {
+  --lane: 0;
+  position: absolute; right: calc(100% + .625rem + var(--lane) * 1.125rem); top: 50%; transform: translateY(-50%);
+  display: grid; place-items: center; width: 1.375rem; height: 1.375rem;
+  border: 1px solid var(--c-border); border-radius: 50%; background: var(--c-bg); color: var(--c);
+  font-size: .6875rem; font-weight: 600; line-height: 1; letter-spacing: 0;
+}
+.route-link:is(:hover, :focus-visible) .route-port { border-color: var(--c); }
+h1 .route-link.sp .route-port { --lane: 1; }
+h1 .route-link.cs .route-port { --lane: 2; }
+.relation-rails { position: absolute; top: 0; left: 0; pointer-events: none; }
+.relation-rails path { fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.rail { stroke: var(--c); stroke-width: 1.75; stroke-opacity: .68; }
+#main:has(.route-link.sp:is(:hover, :focus-visible)) .rail.sp,
+#main:has(.route-link.cs:is(:hover, :focus-visible)) .rail.cs,
+#main:has(.route-link.free:is(:hover, :focus-visible)) .rail.free { stroke-opacity: 1; stroke-width: 2.5; }
+@media screen and (min-width: 35rem) {
+  /* Reserve a gutter only where the existing outer margin runs out. */
+  html:not(.present) #main > .slide {
+    padding-left: max(clamp(1rem, 3vw, 2rem), calc(clamp(4.75rem, 7vw, 6rem) - max(0px, (100vw - 80rem) / 2)));
+  }
+}
+@media (max-width: 34.999rem) {
+  .relation-rails { display: none; }
+  html:not(.present) #headline { padding-left: 4rem; font-size: clamp(1.9rem, 10vw, 2.5rem); }
+}
+html.present :is(.relation-rails, .route-port) { display: none; }
+@media print { .relation-rails, h1 .route-port { display: none; } }
 
 /* ---------- Hero ---------- */
 .hero { padding-top: clamp(2.5rem, 7vw, 5rem); scroll-margin-top: 4rem; }
@@ -234,7 +267,40 @@ h1 .l3 { color: var(--fgColor-default); }
 .layer-title { flex: 1; min-width: 0; }
 .layer-title h2 { font-size: clamp(1.375rem, 2.4vw, 1.75rem); font-weight: 700; letter-spacing: -.015em; line-height: 1.2; }
 .layer-title p { margin-top: .125rem; color: var(--fgColor-muted); font-size: .9375rem; }
+.layer-title .layer-kpi { display: flex; align-items: baseline; gap: .5rem; margin-top: .25rem; color: var(--fgColor-default); font-size: 1rem; line-height: 1.35; }
+.lk-fig { flex: none; color: var(--c); font-size: .9375rem; font-weight: 600; line-height: 1; }
+.lk-txt small { margin-left: .5rem; color: var(--fgColor-muted); font-size: .8125rem; white-space: nowrap; }
+.lk-who { color: var(--fgColor-default); font-weight: 600; }
+html.present .layer-title .layer-kpi { font-size: 1.375rem; }
+html.present .lk-fig { font-size: 1.125rem; }
+html.present .lk-txt small { font-size: 1.0625rem; }
+@media (max-width: 640px) { .lk-txt small { display: block; margin-left: 0; white-space: normal; } }
 .layer-present { flex: none; color: var(--fgColor-muted); }
+
+/* ---------- Workflow usage and access ---------- */
+.grid:has(.usage-flags) .tile-top { min-height: 4.25rem; }
+.usage-flags { display: flex; flex-direction: column; align-items: flex-end; gap: .375rem; min-width: 0; }
+.usage-label { min-width: 0; text-align: right; }
+.usage-chips { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: .25rem; }
+.usage-chip {
+  display: inline-flex; align-items: center; gap: .3rem; max-width: 100%;
+  padding: .15rem .45rem; border: 1px solid var(--borderColor-default); border-radius: 6px;
+  color: var(--fgColor-muted); background: var(--bgColor-neutral-muted);
+  font-size: .6875rem; font-weight: 600; line-height: 1.4;
+}
+.usage-chip .octicon { flex: none; width: .8125rem; height: .8125rem; }
+.usage-credits { color: var(--fgColor-attention); background: var(--bgColor-attention-muted); border-color: var(--borderColor-attention-muted); }
+.usage-label small { display: block; margin-top: .2rem; color: var(--fgColor-muted); font-size: .6875rem; line-height: 1.35; text-wrap: balance; }
+.usage-legend { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--borderColor-muted); color: var(--fgColor-muted); font-size: .75rem; }
+.usage-legend > div { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.usage-legend > p { flex-basis: 100%; }
+.usage-detail { margin: 1rem 0; padding: 1rem; border: 1px solid var(--borderColor-default); border-radius: 8px; background: var(--bgColor-neutral-muted); }
+.usage-detail h4 { margin-bottom: .5rem; font-size: .9375rem; }
+.usage-detail .usage-chips { justify-content: flex-start; margin-bottom: .5rem; }
+.usage-detail p { color: var(--fgColor-muted); font-size: .9375rem; line-height: 1.5; }
+html.present .usage-chip, html.present .usage-label small { font-size: .8125rem; }
+html.present .grid:has(.usage-flags) .tile-top { min-height: 5rem; }
+html.present .usage-legend { font-size: .875rem; }
 
 /* ---------- Grid and tiles ---------- */
 .grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -257,7 +323,7 @@ h1 .l3 { color: var(--fgColor-default); }
 .tile, .tile-open { scroll-margin-top: 5.5rem; scroll-margin-bottom: 1rem; }
 .tile:hover { border-color: var(--c); background: var(--tile-bg-hover); }
 .tile:has(.tile-open:focus-visible) { outline: 2px solid var(--borderColor-accent-emphasis); outline-offset: 2px; }
-.tile-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .5rem; margin-bottom: .5rem; }
+.tile-top { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: .5rem; margin-bottom: .5rem; }
 .tile-icon {
   display: grid; place-items: center; flex: none;
   width: 2.5rem; height: 2.5rem; border: 1px solid var(--c-border); border-radius: 8px;
@@ -305,8 +371,10 @@ h1 .l3 { color: var(--fgColor-default); }
 /* ---------- QR ---------- */
 .qr { width: 9rem; aspect-ratio: 1; overflow: hidden; border-radius: 8px; background: #ffffff; }
 .qr svg { display: block; width: 100%; height: 100%; }
-.hero-qr { margin: 0; display: flex; flex-direction: column; align-items: center; gap: .625rem; text-align: center; }
-.hero-qr figcaption { color: var(--fgColor-muted); font-size: .8125rem; }
+.qr-intro { display: none; }
+html.present .qr-intro.is-current { align-items: center; gap: 1rem; padding-inline: 1rem; text-align: center; }
+html.present .qr-intro h2 { font-size: 2.5rem; line-height: 1.1; }
+html.present .qr-intro .qr { flex: none; width: min(30rem, 74vw, 52vh); }
 .qr-url { color: var(--fgColor-muted); font-size: .8125rem; overflow-wrap: anywhere; }
 
 /* ---------- Footer ---------- */
@@ -380,7 +448,7 @@ html.present .slide { display: none; }
 html.present .slide.is-current {
   display: flex; flex-direction: column; justify-content: center;
   height: 100vh; height: 100dvh; max-width: 120rem;
-  padding: 3rem 4.5rem 5.5rem; overflow: auto;
+  padding: 3rem 4.5rem 4.5rem; overflow: auto;
   animation: fade .18s ease-out;
 }
 @keyframes fade { from { opacity: 0; } }
@@ -392,7 +460,7 @@ html.present .tile-sub { font-size: .875rem; }
 html.present .tile-icon { width: 3rem; height: 3rem; }
 html.present .tile-icon .octicon { width: 1.5rem; height: 1.5rem; }
 html.present .cmp li { font-size: 1.0625rem; }
-html.present .layer-head { margin-bottom: 2rem; }
+html.present .layer-head { margin-bottom: 1.5rem; }
 html.present .layer-num { width: 3.5rem; height: 3.5rem; font-size: 1.125rem; }
 html.present .layer-title h2 { font-size: 2.5rem; }
 html.present .layer-title p { font-size: 1.25rem; }
@@ -403,8 +471,6 @@ html.present .grid { gap: 1.25rem; }
 }
 html.present h1 { font-size: 6rem; }
 html.present .eyebrow { font-size: 1.125rem; }
-html.present .hero-qr .qr { width: 13rem; }
-html.present .hero-qr figcaption { font-size: 1rem; }
 html.present .products { margin-top: 3rem; gap: 1.25rem; }
 html.present .p-name { font-size: 1.625rem; }
 html.present .p-line { font-size: 1.125rem; }
@@ -448,7 +514,6 @@ html.present .qr-hint, html.present .qr-shell .qr-url { font-size: 1.125rem; }
   .actions .btn span { display: none; }
   .actions .btn { width: 2rem; padding: 0; }
   .compare { grid-template-columns: 1fr; }
-  .hero-qr { display: none; }
   .detail-foot .btn span { display: none; }
   .detail-foot .btn { width: 2rem; padding: 0; }
   .layer-present { display: none; }

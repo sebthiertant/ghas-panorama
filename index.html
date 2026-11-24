@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sebthiertant.github.io/ghas-panorama/">
   <meta property="og:title" content="GHAS Panorama · GitHub Advanced Security at a glance">
-  <meta property="og:description" content="Block the leak. Fix the flaw. Ship safely. What's included in GitHub, and what Secret Protection and Code Security add.">
+  <meta property="og:description" content="Start secure. Block the leak. Fix the flaw. What's included in GitHub, and what Secret Protection and Code Security add.">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0d1117">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -49,21 +49,24 @@
 
 <main id="main">
 
+  <section class="slide qr-intro" id="scan-to-follow" data-slide aria-labelledby="h-scan-to-follow">
+    <p class="eyebrow">GitHub Advanced Security · Panorama</p>
+    <h2 id="h-scan-to-follow">Scan to follow along</h2>
+    <div class="qr" data-qr-render aria-hidden="true"></div>
+    <a class="qr-url" href="https://sebthiertant.github.io/ghas-panorama/" data-qr-url>GHAS Panorama</a>
+  </section>
+
   <!-- ============ Title ============ -->
   <section class="slide hero" id="top" data-slide aria-labelledby="headline">
     <div class="hero-main">
       <div class="hero-copy">
         <p class="eyebrow">GitHub Advanced Security <span aria-hidden="true">·</span> Panorama <span aria-hidden="true">·</span> November 2026</p>
         <h1 id="headline">
-          <span class="l1">Block the leak.</span>
-          <span class="l2">Fix the flaw.</span>
-          <span class="l3">Ship safely.</span>
+          <span class="l1"><a class="route-link free" href="#included" data-goto="included" aria-label="Start secure. Go to Security foundations"><span class="route-port mono" aria-hidden="true">01</span>Start secure.</a></span>
+          <span class="l2"><a class="route-link sp" href="#secret-protection" data-goto="secret-protection" aria-label="Block the leak. Go to Secret Protection"><span class="route-port mono" aria-hidden="true">02</span>Block the leak.</a></span>
+          <span class="l3"><a class="route-link cs" href="#code-security" data-goto="code-security" aria-label="Fix the flaw. Go to Code Security"><span class="route-port mono" aria-hidden="true">03</span>Fix the flaw.</a></span>
         </h1>
       </div>
-      <figure class="hero-qr">
-        <div class="qr" data-qr-render aria-hidden="true"></div>
-        <figcaption>Scan to open this page</figcaption>
-      </figure>
     </div>
 
     <div class="products">
@@ -90,13 +93,6 @@
       </a>
     </div>
 
-    <ul class="legend" aria-label="Legend">
-      <li><span class="badge free">Included</span> no security add-on needed</li>
-      <li><span class="badge scope">Public repos only</span> limited by plan or visibility</li>
-      <li><span class="badge sp">Secret Protection</span> <span class="badge cs">Code Security</span> paid add-ons for private and internal repos</li>
-      <li><span class="badge public"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#globe"/></svg>Public repos</span> also free for public repos</li>
-      <li><span class="pill preview">Preview</span> may change before GA</li>
-    </ul>
   </section>
 
   <!-- ============ Get started ============ -->
@@ -118,7 +114,7 @@
       <span class="layer-num" aria-hidden="true">01</span>
       <div class="layer-title">
         <h2 id="h-included">Security foundations</h2>
-        <p>Included capabilities. Availability depends on plan and repository visibility.</p>
+        <p class="layer-kpi"><b class="lk-fig mono">50+</b><span class="lk-txt">production changes a day, with Dependabot keeping dependencies patched <small><span class="lk-who">Shopify</span></small></span></p>
       </div>
       <button type="button" class="btn-icon layer-present" data-present-at="included" aria-label="Present this section" title="Present this section">
         <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#screen-full"/></svg>
@@ -282,7 +278,7 @@
       <span class="layer-num" aria-hidden="true">02</span>
       <div class="layer-title">
         <h2 id="h-sp">Secret Protection</h2>
-        <p>Detect and prevent secret leaks, from the agent's first keystroke to public GitHub.</p>
+        <p class="layer-kpi"><b class="lk-fig mono">22,000</b><span class="lk-txt">exposed secrets remediated with Secret Protection <small><span class="lk-who">General Motors</span></small></span></p>
       </div>
       <button type="button" class="btn-icon layer-present" data-present-at="secret-protection" aria-label="Present this section" title="Present this section">
         <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#screen-full"/></svg>
@@ -449,7 +445,7 @@
       <span class="layer-num" aria-hidden="true">03</span>
       <div class="layer-title">
         <h2 id="h-cs">Code Security</h2>
-        <p>CodeQL and AI Scan find vulnerabilities. Copilot fixes them.</p>
+        <p class="layer-kpi"><b class="lk-fig mono">−45%</b><span class="lk-txt">mean time to remediate with Copilot Autofix <small><span class="lk-who">Otto Group</span></small></span></p>
       </div>
       <button type="button" class="btn-icon layer-present" data-present-at="code-security" aria-label="Present this section" title="Present this section">
         <svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#screen-full"/></svg>
@@ -728,6 +724,21 @@
     </div>
   </section>
 
+  <section class="slide layer" id="label-guide" data-slide aria-labelledby="h-label-guide">
+    <h2 id="h-label-guide">Label guide</h2>
+    <ul class="legend" aria-label="Product, availability and status labels">
+      <li><span class="badge free">Included</span> no security add-on needed</li>
+      <li><span class="badge scope">Public repos only</span> limited by plan or visibility</li>
+      <li><span class="badge sp">Secret Protection</span> <span class="badge cs">Code Security</span> paid add-ons for private and internal repos</li>
+      <li><span class="badge public"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#globe"/></svg>Public repos</span> also free for public repos</li>
+      <li><span class="pill preview">Preview</span> may change before GA</li>
+    </ul>
+    <div class="usage-legend" aria-label="AI usage and access labels">
+      <div><span class="usage-chip usage-credits"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#sparkle-fill"/></svg>AI credits</span><span>Usage-based; eligible included credits first.</span></div>
+      <div><span class="usage-chip usage-copilot"><svg class="octicon" aria-hidden="true"><use href="assets/icons.svg#copilot"/></svg>Copilot access</span><span>Uses your Copilot entitlement, not necessarily an extra paid seat.</span></div>
+      <p>Qualifiers identify the workflow concerned. Open a tile for conditions and sources. Existing product and plan badges still apply.</p>
+    </div>
+  </section>
 </main>
 
 <footer class="footer" id="sources">

@@ -8,16 +8,18 @@ GitHub Advanced Security at a glance. This is a tile-first page for colleagues a
 
 | Action | How |
 |---|---|
-| Start presentation (full screen) | **Present** button, or <kbd>P</kbd> (starts at the section on screen) |
+| Start presentation (full screen) | **Present** button, or <kbd>P</kbd> (starts with the audience QR slide, followed by the hero) |
 | Present one section | the screen icon at the right of a section title |
 | Next / previous slide | <kbd>→</kbd> <kbd>←</kbd>, <kbd>Space</kbd>, <kbd>PageDown</kbd> <kbd>PageUp</kbd>, or swipe |
 | First / last slide | <kbd>Home</kbd> <kbd>End</kbd> |
 | Open a feature | click its tile; <kbd>→</kbd> <kbd>←</kbd> move between features |
-| QR code for the audience | shown in the page header; **QR code** button or <kbd>Q</kbd> enlarges it |
+| QR code for the audience | opening presentation slide; **QR code** button or <kbd>Q</kbd> opens the QR dialog |
 | Light / dark theme | sun/moon button or <kbd>T</kbd> (dark is the default; your choice is remembered) |
 | Close / exit | <kbd>Esc</kbd> |
 
 Deep links open a feature directly, for example `#dependabot`, `#push-protection` or `#copilot-autofix`.
+
+The hero headlines link to their numbered sections. Selected customer proof points highlight Shopify, General Motors and Otto Group. Product, availability, status and workflow-scoped AI usage/access labels are explained in the **Label guide** at the bottom of the page (the final presentation slide). Open a tile for usage conditions and public documentation sources.
 
 ## Read this fairly
 
