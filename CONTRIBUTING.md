@@ -66,7 +66,7 @@ node --test tests/ui.test.mjs
 git diff --check
 ```
 
-Set `CHROME_PATH` if Chrome is installed somewhere other than the standard macOS/Linux location. Tests start their own loopback server under `/ghas-panorama/`, use a temporary browser profile, and remove it when finished.
+Set `CHROME_PATH` if Chrome is installed somewhere other than the standard macOS/Linux location. Tests start their own loopback server under `/ghas-panorama/` and use a temporary browser profile. Teardown shuts Chrome down before removing the profile and retries transient file cleanup errors.
 
 Screenshots in `.artifacts/` cover desktop (1440px), tablet (768px), mobile (390px) and narrow mobile (320px), both themes, dialogs and every presentation slide. CI uploads them as `browser-evidence` for 14 days. Review these for intentional and accidental design changes. They are **review evidence, not pixel-diff baselines**; the automated layout checks catch overflow, while a human checks appearance. Chrome is covered; Safari/Firefox, real-device touch and OS fullscreen behavior still need manual checks when changed.
 

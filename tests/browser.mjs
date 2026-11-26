@@ -77,6 +77,27 @@ export async function launchBrowser() {
   const pending = new Map();
   const errors = [];
   let nextId = 0;
+  const closed = new Promise((resolve) => chrome.once("close", resolve));
+
+  async function close() {
+    const killTimer = setTimeout(() => chrome.kill("SIGKILL"), 5000);
+    try {
+      if (websocket?.readyState === WebSocket.OPEN) {
+        // Chrome may close the socket before replying; wait for the process instead.
+        websocket.send(JSON.stringify({ id: ++nextId, method: "Browser.close" }));
+      } else {
+        chrome.kill();
+      }
+      await closed;
+    } finally {
+      clearTimeout(killTimer);
+      websocket?.close();
+      await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
+      // Chrome helpers can still finish writing to the profile after the browser exits.
+      await rm(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+    }
+  }
+
   try {
     const endpoint = await new Promise((resolve, reject) => {
       const timer = setTimeout(() => reject(new Error(`Chrome startup timed out: ${output}`)), 60000);
@@ -180,24 +201,14 @@ export async function launchBrowser() {
         await command("Input.dispatchKeyEvent", { type: "keyDown", key, code, windowsVirtualKeyCode: virtualKey });
         await command("Input.dispatchKeyEvent", { type: "keyUp", key, code, windowsVirtualKeyCode: virtualKey });
       },
-      async close() {
-        websocket.close();
-        const exited = once(chrome, "exit");
-        chrome.kill();
-        await exited;
-        await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
-        await rm(profile, { recursive: true, force: true });
-      },
+      close,
     };
   } catch (error) {
-    if (websocket) websocket.close();
-    if (chrome.exitCode === null && chrome.signalCode === null) {
-      const exited = once(chrome, "exit");
-      chrome.kill();
-      await exited;
+    try {
+      await close();
+    } catch (cleanupError) {
+      throw new AggregateError([error, cleanupError], `Chrome startup failed: ${error.message}; cleanup failed: ${cleanupError.message}`);
     }
-    server.close();
-    await rm(profile, { recursive: true, force: true });
     throw error;
   }
 }
