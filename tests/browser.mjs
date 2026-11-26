@@ -79,7 +79,7 @@ export async function launchBrowser() {
   let nextId = 0;
   try {
     const endpoint = await new Promise((resolve, reject) => {
-      const timer = setTimeout(() => reject(new Error(`Chrome startup timed out: ${output}`)), 15000);
+      const timer = setTimeout(() => reject(new Error(`Chrome startup timed out: ${output}`)), 60000);
       chrome.once("error", (error) => { clearTimeout(timer); reject(error); });
       chrome.once("exit", (code) => {
         clearTimeout(timer);

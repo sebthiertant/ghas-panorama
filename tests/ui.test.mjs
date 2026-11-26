@@ -7,7 +7,12 @@ let browser;
 const artifacts = new URL("../.artifacts/", import.meta.url);
 before(async () => {
   await mkdir(artifacts, { recursive: true });
-  browser = await launchBrowser();
+  try {
+    browser = await launchBrowser();
+  } catch (error) {
+    await writeFile(new URL("browser-startup-error.txt", artifacts), error.stack);
+    throw error;
+  }
   await browser.command("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
 });
 after(async () => {
