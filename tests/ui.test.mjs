@@ -8,6 +8,7 @@ const artifacts = new URL("../.artifacts/", import.meta.url);
 before(async () => {
   await mkdir(artifacts, { recursive: true });
   browser = await launchBrowser();
+  await browser.command("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
 });
 after(async () => {
   if (!browser) return;
@@ -102,6 +103,15 @@ test("desktop, tablet, and mobile layouts fit in both themes", async () => {
       assert.deepEqual(clipped, [], `${label}/${theme}: controls or cards off screen`);
       await browser.evaluate("scrollTo({ top: 0, behavior: 'instant' })");
       await screenshot(`${label}-${theme}`);
+      await browser.click("#dependabot .tile-open");
+      await browser.waitFor("document.querySelector('#detail').open");
+      assert.ok(await browser.evaluate(`(() => {
+        const rect = document.querySelector("#detail").getBoundingClientRect();
+        return rect.left >= -1 && rect.top >= -1 && rect.right <= innerWidth + 1 && rect.bottom <= innerHeight + 1;
+      })()`), `${label}/${theme}: feature dialog does not fit the viewport`);
+      await screenshot(`${label}-${theme}-dialog`);
+      await browser.click("#detail [data-close]");
+      await browser.waitFor("!document.querySelector('#detail').open && location.hash === ''");
       if (theme === "dark") await browser.key("t", "KeyT", 84);
     }
     await browser.key("t", "KeyT", 84);

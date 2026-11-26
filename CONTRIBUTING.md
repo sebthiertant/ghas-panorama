@@ -87,10 +87,10 @@ Schedules and Dependabot start only after their configuration reaches the defaul
 
 Open the live Pages URL, check a feature deep link, both themes, the QR dialog and a presentation section. Verify the Pages deployment corresponds to the release commit.
 
-If a release breaks production, revert the release merge with `git revert -m 1 <release-merge-sha>` on a new branch based on `develop`, then use the same checked feature-to-develop and develop-to-main PR path. Do not force-push or deploy unvalidated files. For an urgent outage, the owner can explicitly authorize a documented temporary protection change; restore the rule immediately afterward.
+If a release breaks production, revert the release merge with `git revert -m 1 <release-merge-sha>` on a new branch based on `develop`, then use the same checked feature-to-develop and develop-to-main PR path. Keep required validation/deployment workflows in place if the release also introduced those workflows; reverting them would remove the checks needed to merge the recovery PR. Do not force-push or deploy unvalidated files. For an urgent outage, the owner can explicitly authorize a documented temporary protection change; restore the rule immediately afterward.
 
 ## Initial activation
 
-The setup PR targets `develop`. Merge it there after its checks pass, then open a release PR from `develop` to `main` using a merge commit. In **Settings -> Pages**, select **GitHub Actions** as the source before merging the release. Restrict the `github-pages` environment to `main`. The old published site remains available during the transition.
+The `develop` branch, required-PR/`Validation` protections and merge-commit-only production releases are configured. Pages uses **GitHub Actions**, and the `github-pages` environment permits only `main`. Dependency graph, Dependabot alerts/security updates, secret scanning and push protection are enabled. Existing owner-only production updates and history protections remain in place.
 
-Require `Validation` on both branches only after the setup PR has reported that exact check. Keep the existing owner-only production updates and history protections.
+The setup PR targets `develop`. Merge it there after its checks pass, then open a release PR from `develop` to `main` using a merge commit. The old published site remains available during the transition. Deployment, schedules and the repository's Dependabot configuration become active after that release reaches `main`; merging the setup PR into `develop` alone does not publish it.
