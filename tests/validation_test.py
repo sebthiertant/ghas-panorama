@@ -19,6 +19,7 @@ def load_script(name):
 validator = load_script("validate")
 links = load_script("check-links")
 codeql = load_script("check-codeql")
+packager = load_script("package-site")
 
 
 class StaticValidationTests(unittest.TestCase):
@@ -84,6 +85,33 @@ class CodeQLGateTests(unittest.TestCase):
         report = {"runs": [{"tool": {"driver": {"rules": []}}, "results": [{"ruleId": "unknown"}]}]}
         with self.assertRaises(KeyError):
             codeql.blocking_findings(report)
+
+
+class PackagingTests(unittest.TestCase):
+    def build(self, revision=None):
+        directory = tempfile.TemporaryDirectory()
+        self.addCleanup(directory.cleanup)
+        output = Path(directory.name) / "site"
+        packager.package(Path(__file__).resolve().parents[1], output, revision)
+        return output
+
+    def test_production_package_contains_only_public_files_unchanged(self):
+        output = self.build()
+        self.assertEqual(sorted(p.name for p in output.iterdir()), [".nojekyll", "assets", "index.html"])
+        source = (Path(__file__).resolve().parents[1] / "index.html").read_text(encoding="utf-8")
+        self.assertEqual((output / "index.html").read_text(encoding="utf-8"), source)
+
+    def test_preview_is_self_referencing_labelled_and_not_indexed(self):
+        html = (self.build("abc123") / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn(packager.PRODUCTION_URL, html)
+        self.assertIn(f'<link rel="canonical" href="{packager.PREVIEW_URL}">', html)
+        self.assertIn("<title>[Preview] ", html)
+        self.assertIn('<meta name="robots" content="noindex, nofollow">', html)
+        self.assertIn('content="abc123"', html)
+
+    def test_preview_refuses_unexpected_page_structure(self):
+        with self.assertRaises(ValueError):
+            packager.preview_html("<html><head><title>x</title></head></html>", "abc123")
 
 
 if __name__ == "__main__":

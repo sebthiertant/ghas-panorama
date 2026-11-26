@@ -9,8 +9,15 @@
 - Require a PR, a current branch, and the `Validation` check on both branches. Keep force pushes and deletion blocked. Do not bypass these rules for routine updates.
 - Review changes yourself if you are the sole maintainer. A second person's review is useful for product claims, but is not a mandatory approval that would prevent a solo maintainer from merging.
 - Merge release PRs with a **merge commit**, not squash or rebase. This preserves the ancestry of the permanent `develop` branch.
-- Only `main` may deploy to the `github-pages` environment. Successful integration checks do not publish `develop` or PR branches.
-- There is no publicly deployed staging site. Run locally or download the PR's browser screenshots to review integration changes.
+- Only `main` may deploy to the `github-pages` environment. PR branches are never published.
+- After `Validation` passes on a push to `develop`, the **Publish develop preview** job pushes a packaged copy to [`sebthiertant/ghas-panorama-preview`](https://github.com/sebthiertant/ghas-panorama-preview). It is served at <https://sebthiertant.github.io/ghas-panorama-preview/>. GitHub Pages serves one site per repository, so the preview needs this separate repository. The preview is public, titled `[Preview]`, marked `noindex`, and its canonical, share and QR links point to the preview. Its `ghas-panorama-preview` meta tag records the source commit. Do not share it with customers.
+- The preview repository has issues, pull requests, wiki and projects disabled. It must contain only generated output; each run replaces its `main` branch. Its write deploy key is stored only as `PREVIEW_DEPLOY_KEY` in this repository's `preview` environment, which only `develop` may use. To rotate the key, add a new write deploy key to the preview repository, replace the secret, then delete the old key.
+
+## Who can contribute
+
+Contributions are currently closed. Only collaborators can create pull requests and issues. The wiki and projects are disabled. Forks of the public repository cannot change `develop` or `main`.
+
+To open contributions later, prefer adding specific people as collaborators with the **Write** role. They remain bound by the branch rules and `Validation`. To accept outside pull requests, change **Settings → General → Pull requests** from collaborators only to everyone. Fork PR workflows get read-only tokens and no secrets.
 
 Example:
 
@@ -23,7 +30,7 @@ git commit -m "Update feature-name"
 git push -u origin HEAD
 ```
 
-Open a PR into `develop`, review its checks and screenshots, then merge it. When a batch is ready, open a release PR with base `main` and head `develop`. Review the complete release diff and merge only after its checks pass. After a release, merge `main` back into `develop` if it is behind; do not reset or force-push either branch.
+Open a PR into `develop`, review its checks and screenshots, then merge it. Check the preview site once its job finishes. When a batch is ready, open a release PR with base `main` and head `develop`. Review the complete release diff and merge only after its checks pass. After a release, merge `main` back into `develop` if it is behind; do not reset or force-push either branch.
 
 ## Automated gates
 
@@ -35,7 +42,8 @@ Open a PR into `develop`, review its checks and screenshots, then merge it. When
 | Dependency review | Blocks high/critical known vulnerabilities introduced through tracked dependencies in PRs, including recognized Action dependencies |
 | Release policy | Rejects production PRs not coming from this repository's `develop` |
 | Validation | One required aggregate check; fails if any applicable check fails or is cancelled |
-| Publish production | Runs only after validation on `main`; deploys `index.html`, `.nojekyll` and `assets/`, not tests or tooling |
+| Publish develop preview | Runs only after validation on `develop` pushes; pushes a noindex preview package to the preview repository |
+| Publish production | Runs only after validation on `main`; deploys `index.html`, `.nojekyll` and `assets/`, not tests or tooling. `scripts/package-site.py` builds both packages |
 
 CodeQL's completed analysis is not the same as zero findings. The workflow additionally checks its SARIF reports and fails on high/critical security or error-level results, including existing findings. Missing or malformed reports fail rather than passing silently. Lower-severity findings remain visible in the Security tab and `codeql-evidence` artifact; review those too. Do not dismiss an alert without documenting why it is safe.
 
@@ -91,6 +99,6 @@ If a release breaks production, revert the release merge with `git revert -m 1 <
 
 ## Initial activation
 
-The `develop` branch, required-PR/`Validation` protections and merge-commit-only production releases are configured. Pages uses **GitHub Actions**, and the `github-pages` environment permits only `main`. Dependency graph, Dependabot alerts/security updates, secret scanning and push protection are enabled. Existing owner-only production updates and history protections remain in place.
+The `develop` branch, required-PR/`Validation` protections and merge-commit-only production releases are configured. Pages uses **GitHub Actions**, and the `github-pages` environment permits only `main`. Dependency graph, Dependabot alerts/security updates, secret scanning and push protection are enabled. Existing owner-only production updates and history protections remain in place. Pull request and issue creation are restricted to collaborators. The preview repository, its Pages site, the `preview` environment and its deploy-key secret are configured. The preview was first created manually from `develop` and will be updated automatically after this workflow reaches `develop`.
 
 The setup PR targets `develop`. Merge it there after its checks pass, then open a release PR from `develop` to `main` using a merge commit. The old published site remains available during the transition. Deployment, schedules and the repository's Dependabot configuration become active after that release reaches `main`; merging the setup PR into `develop` alone does not publish it.

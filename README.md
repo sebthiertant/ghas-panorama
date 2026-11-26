@@ -36,7 +36,7 @@ Plain HTML, CSS and JavaScript with no build step and no third-party requests. G
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the development/release process, local checks, security scanning, responsive browser checks, source-link maintenance and rollback.
 
-Feature PRs target `develop`. Approved releases go from `develop` to `main`. The validation workflow checks content integrity, browser behavior, JavaScript/Actions security and dependency changes before the production deployment. Weekly source audits support a human review of product accuracy; they do not automatically rewrite feature claims.
+Feature PRs target `develop`. Each validated `develop` push updates the noindex [preview](https://sebthiertant.github.io/ghas-panorama-preview/). Approved releases go from `develop` to `main`. Contributions are currently limited to collaborators. The validation workflow checks content integrity, browser behavior, JavaScript/Actions security and dependency changes before the production deployment. Weekly source audits support a human review of product accuracy; they do not automatically rewrite feature claims.
 
 ## Credits and licences
 
