@@ -15,7 +15,7 @@
 
 ## Who can contribute
 
-Contributions are currently closed. Only collaborators can create pull requests and issues. The wiki and projects are disabled. Forks of the public repository cannot change `develop` or `main`.
+Contributions are currently closed. Pull request creation is limited to collaborators, and an interaction limit restricts issues and comments to collaborators. GitHub caps interaction limits at six months (the current one expires 26 May 2027), so renew it under **Settings → Moderation options → Interaction limits** while contributions stay closed. The preview repository has the same restrictions. The wiki and projects are disabled. Forks of the public repository cannot change `develop` or `main`.
 
 To open contributions later, prefer adding specific people as collaborators with the **Write** role. They remain bound by the branch rules and `Validation`. To accept outside pull requests, change **Settings → General → Pull requests** from collaborators only to everyone. Fork PR workflows get read-only tokens and no secrets.
 
