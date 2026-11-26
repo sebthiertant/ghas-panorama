@@ -1,0 +1,76 @@
+name: Content maintenance
+
+on:
+  schedule:
+    - cron: "15 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: content-maintenance
+  cancel-in-progress: false
+
+jobs:
+  sources:
+    name: Audit public sources
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
+      - run: python3 scripts/validate.py
+      - run: node --test tests/ui.test.mjs
+      - run: python3 scripts/check-links.py
+      - name: Save source audit and screenshots
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: content-review-evidence
+          path: .artifacts/
+          if-no-files-found: error
+          retention-days: 30
+
+  review:
+    name: Open a content review reminder
+    needs: sources
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const title = "Panorama content review";
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              ...context.repo, state: "open", creator: "github-actions[bot]", per_page: 100,
+            });
+            if (issues.some(issue => !issue.pull_request && issue.title === title)) {
+              core.info("An open content review already exists.");
+              return;
+            }
+            await github.rest.issues.create({
+              ...context.repo,
+              title,
+              body: [
+                "Review public sources before changing product claims. A working link is not proof that the content is current.",
+                "",
+                `Audit and screenshots: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                "",
+                "- [ ] Review the source-link report, including unverified URLs.",
+                "- [ ] Check the GitHub changelog and linked product documentation.",
+                "- [ ] Recheck GA/preview status, plans, visibility, GHEC/GHES availability, AI credits and Copilot access.",
+                "- [ ] Verify customer examples against their public sources.",
+                "- [ ] Review the vendored QR library's upstream security notices and license.",
+                "- [ ] Make changes through a feature PR into develop; review browser evidence.",
+                "- [ ] Update the as-of date only after completing the factual review.",
+                "- [ ] Release develop to main, then verify the live site.",
+              ].join("\n"),
+            });
