@@ -31,7 +31,7 @@ Open a PR into `develop`, review its checks and screenshots, then merge it. When
 | --- | --- |
 | Static checks | Missing assets, anchors, SVG symbols and ARIA references; duplicate IDs; HTTPS source references; JavaScript syntax; whitespace errors |
 | Browser checks | Every feature dialog and its sources, deep links, keyboard navigation, focus restoration, QR rendering, theme persistence, responsive layouts and presentation mode |
-| CodeQL | Extended JavaScript and Actions security analysis; blocks high/critical security and error-level findings; runs on PRs, integration/production pushes and weekly |
+| CodeQL | Extended JavaScript, Python tooling and Actions security analysis; blocks high/critical security and error-level findings; runs on PRs, integration/production pushes and weekly |
 | Dependency review | Blocks high/critical known vulnerabilities introduced through tracked dependencies in PRs, including recognized Action dependencies |
 | Release policy | Rejects production PRs not coming from this repository's `develop` |
 | Validation | One required aggregate check; fails if any applicable check fails or is cancelled |
